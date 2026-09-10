@@ -1,0 +1,52 @@
+---
+title: "Personal Webpage"
+author: "Edwin X. Garcia-Rios"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+hhhh
+<center>
+<img src="20250827_223806.jpg" width="400" height="400" />
+</center>
+
+# This is my first Rmd.
+## About me:
+
+- I am __Edwin__<br>
+* I like **ants!**<br>
+- My favorite species is __*Temnothorax isabellae*__.
+
+<center>
+<img src="C:\Users\egrio\Downloads\hormiga 21 (CF3) (1).jpg" width="550" height="320"/>
+</center>
+
+## Other ant species:
+- __Native species:__
+  * *Nylanderia semitincta*
+  * *Platythyrea punctata*
+  * *Odontomachus sp.*
+- __Introduced species:__
+  * *Wasmannia auropunctata*
+  * *Solenopsis invicta*
+  * *Paratrechina longicornis*
+
+## R Chunk
+
+```{r echo=FALSE}
+3 + 5
+```
+
+<br>
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(palmerpenguins)
+
+ggplot(data = penguins, aes(x = flipper_length_mm, 
+                            y = body_mass_g)) +
+  geom_point(aes(color = species, shape = species))
+```
+
