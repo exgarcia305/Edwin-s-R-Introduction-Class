@@ -7,7 +7,7 @@ output:
     theme: cayman
     highlight: github
 ---
-hhhh
+
 <center>
 <img src="20250827_223806.jpg" width="400" height="400" />
 </center>
