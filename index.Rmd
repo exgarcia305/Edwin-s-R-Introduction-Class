@@ -23,7 +23,7 @@ output:
 <img src="C:\Users\egrio\Downloads\hormiga 21 (CF3) (1).jpg" width="550" height="320"/>
 </center>
 
-## Other ant species from Puerto Rico:
+## Other ant species from Puerto Rico:,
 - __Native species:__
   * *Nylanderia semitincta*
   * *Platythyrea punctata*
@@ -33,20 +33,6 @@ output:
   * *Solenopsis invicta*
   * *Paratrechina longicornis*
 
-## R Chunk
+## Assignments
 
-```{r echo=FALSE}
-3 + 5
-```
-
-<br>
-
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-library(ggplot2)
-library(palmerpenguins)
-
-ggplot(data = penguins, aes(x = flipper_length_mm, 
-                            y = body_mass_g)) +
-  geom_point(aes(color = species, shape = species))
-```
-
+### [R Tutorial 1](rtutorials/rtutorial1_edwin.html)
