@@ -1,0 +1,10 @@
+---
+title: "Assigment 1"
+author: "Edwin Garcia"
+date: "`2026-09-17`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+
+# Hi
+
+###[R Tutorial 1](assignments/assignments_1/rtutorial1_edwin.html)
