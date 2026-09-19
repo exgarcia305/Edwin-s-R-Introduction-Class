@@ -23,7 +23,7 @@ output:
 <img src="C:\Users\egrio\Downloads\hormiga 21 (CF3) (1).jpg" width="550" height="320"/>
 </center>
 
-## Other ant species from Puerto Rico:,
+## Other ant species from Puerto Rico:
 - __Native species:__
   * *Nylanderia semitincta*
   * *Platythyrea punctata*
