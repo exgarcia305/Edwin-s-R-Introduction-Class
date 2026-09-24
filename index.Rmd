@@ -29,7 +29,7 @@ output:
   * *Platythyrea punctata*
   * *Odontomachus sp.*
 - __Introduced species:__
-  * *Wasmannia auropunctata*
+  * Abayalde (*Wasmannia auropunctata*)
   * *Solenopsis invicta*
   * *Paratrechina longicornis*
 
