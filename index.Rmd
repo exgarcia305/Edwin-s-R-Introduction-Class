@@ -36,3 +36,5 @@ output:
 ## Assignments
 
 ### [R Tutorial 1](rtutorials/rtutorial1_edwin.html)
+### [R Tutorial 2](rtutorials/rtutorial2_edwin.html)
+
