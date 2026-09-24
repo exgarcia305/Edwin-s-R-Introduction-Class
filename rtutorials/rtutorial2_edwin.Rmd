@@ -7,3 +7,5 @@ output: html_document
 
 # __R Tutorial__
 ## __dplyr__
+
+__Q1.__
