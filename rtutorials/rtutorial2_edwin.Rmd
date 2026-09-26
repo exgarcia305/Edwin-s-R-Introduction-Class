@@ -1,11 +1,68 @@
 ---
 title: "Assignment 2"
-author: "Edwin Garcia"
+author: "Edwin X. Garcia Rios"
 date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
 output: html_document
 ---
 
-# __R Tutorial__
-## __dplyr__
+# __R Tutorial: dplyr__
 
-__Q1.__
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+library(gapminder)
+
+data(gapminder)
+head(gapminder)
+```
+
+__Q1. What class is the gapminder dataset?__
+```{r}
+class(gapminder)
+```
+__Q2. Filter a section of gapminder with a life expectancy smaller than 29.__
+```{r}
+filter(gapminder, lifeExp < 29)
+```
+__Q3. Filter a section of gapminder with a life expectancy smaller than 29.__
+```{r}
+filter(gapminder, country == "Rwanda", year > 1979)
+```
+__Q4. Create a new dataset from gapminder excluding the column gdpPercap.__
+```{r}
+new_gapminder <- gapminder %>%
+  select(-gdpPercap)
+new_gapminder
+```
+__Q5. Arrange the dataset in ascending order of lifeExp.__
+```{r}
+new_gapminder %>% 
+  arrange(lifeExp)
+```
+__Q6. Arrange the dataset in descending order of lifeExp.__
+```{r}
+new_gapminder %>%
+  arrange(desc(lifeExp))
+```
+__Q7. Create a new dataset with only the columns year and lifeExp.__
+```{r}
+gapmndr <- gapminder %>%
+  select(year, lifeExp)
+gapmndr
+```
+__Q8. Filter the dataset for the country Cambodia and show only the columns year and lifeExp.__
+```{r}
+filter(gapminder, country == "Cambodia") %>%
+  select(year, lifeExp)
+```
+__Q9. Select only the countries in Africa.__
+```{r}
+filter(gapminder, continent == "Africa") %>%
+  select(country)
+```
+__Q10. Create a new column called lifeExp_months that shows life expectancy in months.__
+```{r}
+lifeExp_months <- gapminder %>%
+  mutate(lifeExp_months = 12)
+lifeExp_months %>%
+  select(lifeExp_months, lifeExp, everything())
+```
