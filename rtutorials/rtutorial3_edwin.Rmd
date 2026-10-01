@@ -1,0 +1,8 @@
+---
+title: "Assignment 3"
+author: "Edwin X. Garcia Rios"
+date: "2026-10-01"
+output: html_document
+---
+
+# __R Tutorial: ggplot__
