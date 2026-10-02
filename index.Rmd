@@ -29,7 +29,7 @@ output:
   * *Platythyrea punctata*
   * *Odontomachus sp.*
 - __Introduced species:__
-  * Abayalde (*Wasmannia auropunctata*)
+  * *Wasmannia auropunctata*
   * *Solenopsis invicta*
   * *Paratrechina longicornis*
 
@@ -37,4 +37,4 @@ output:
 
 ### [R Tutorial 1](rtutorials/rtutorial1_edwin.html)
 ### [R Tutorial 2](rtutorials/rtutorial2_edwin.html)
-
+### [R Tutorial 3](rtutorials/rtutorial3_edwin.html)
