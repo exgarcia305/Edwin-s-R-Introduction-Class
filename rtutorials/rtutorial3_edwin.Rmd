@@ -5,4 +5,64 @@ date: "2026-10-01"
 output: html_document
 ---
 
-# __R Tutorial: ggplot__
+# __R Tutorial: GGPLOT__
+```{r}
+library(ggplot2)
+
+data("trees")
+head(trees)
+```
+__Q1.Create a histogram showing the distribution of Girth.__
+```{r}
+color = c("red")
+ggplot(trees,
+       aes(x = Girth)) +
+  geom_histogram(bins = 31,
+                 fill = color) + 
+  labs(
+    title = "Distribution of Girth",
+    x = "Girth",
+    y = "Trees"
+  ) +
+  theme_linedraw()
+```
+__Q2.Create a histogram showing the distribution of Volume.__
+```{r}
+color = c("red")
+ggplot(trees,
+       aes(x = Volume)) +
+  geom_histogram(bins = 31,
+                 fill = color) + 
+  labs(
+    title = "Ditirbution of Volume",
+    x = "Volume",
+    y = "Trees"
+  ) +
+  theme_linedraw()
+```
+__Q3.Create a scatterplot showing the relationship between Girth and Volume.__
+```{r}
+ggplot(trees,
+       aes(Girth, Volume)) +
+  geom_point(color = "green") +
+  geom_smooth(method = "lm", se = F, color = "blue") +
+  labs(
+    title = "Relationship Between Tree Girth and Volume"
+  ) +
+  theme_bw()
+```
+__Q4.Use the Shapiro–Wilk test to assess whether Volume is normally distributed. Report the p-value and state whether the data are normally distributed.__
+```{r}
+data("trees")
+shapiro.test(trees$Volume)
+```
+__Report:__
+_Since the p-value (p = 0.003579) is <0.05, the null hypotheses is rejected, therefore the data is not normally distributed._
+
+__Q5.Repeat the Shapiro–Wilk test for Girth. Report the p-value and state whether Girth is normally distributed.__
+```{r}
+data("trees")
+shapiro.test(trees$Girth)
+```
+__Report:__
+_Since the p-value (p = 0.08893) is >0.05, the null hypotheses is accepted, therefore it is determined that the data has a normal distribution._
