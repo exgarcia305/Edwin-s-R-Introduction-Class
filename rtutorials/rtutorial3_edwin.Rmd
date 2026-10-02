@@ -26,6 +26,8 @@ ggplot(trees,
   ) +
   theme_linedraw()
 ```
+
+
 __Q2.Create a histogram showing the distribution of Volume.__
 ```{r}
 color = c("red")
@@ -40,6 +42,8 @@ ggplot(trees,
   ) +
   theme_linedraw()
 ```
+
+
 __Q3.Create a scatterplot showing the relationship between Girth and Volume.__
 ```{r}
 ggplot(trees,
@@ -51,6 +55,8 @@ ggplot(trees,
   ) +
   theme_bw()
 ```
+
+
 __Q4.Use the Shapiro–Wilk test to assess whether Volume is normally distributed. Report the p-value and state whether the data are normally distributed.__
 ```{r}
 data("trees")
@@ -58,6 +64,7 @@ shapiro.test(trees$Volume)
 ```
 __Report:__
 _Since the p-value (p = 0.003579) is <0.05, the null hypotheses is rejected, therefore the data is not normally distributed._
+
 
 __Q5.Repeat the Shapiro–Wilk test for Girth. Report the p-value and state whether Girth is normally distributed.__
 ```{r}
