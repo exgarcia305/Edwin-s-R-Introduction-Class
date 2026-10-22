@@ -32,7 +32,7 @@ prop.table(table(penguins$island))
 summary(penguins)
 summary(penguins$body_mass)
 
-my_function <- function(input) {
+my_function <- function(input)
   Body
   return(output)
 

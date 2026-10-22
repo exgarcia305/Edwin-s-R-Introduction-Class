@@ -38,3 +38,8 @@ output:
 ### [R Tutorial 1](rtutorials/rtutorial1_edwin.html)
 ### [R Tutorial 2](rtutorials/rtutorial2_edwin.html)
 ### [R Tutorial 3](rtutorials/rtutorial3_edwin.html)
+
+<hr style="border: 1px solid #ccc;">
+
+## Midterms
+### [Midterm 1](midterms/midterm1.html)

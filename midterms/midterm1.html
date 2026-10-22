@@ -9,9 +9,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Edwin X. Garcia Rios" />
+<meta name="author" content="Edwin X. García Ríos" />
 
-<meta name="date" content="2026-10-01" />
 
 <title>Exam 1</title>
 
@@ -351,13 +350,131 @@ display: none;
 
 
 <h1 class="title toc-ignore">Exam 1</h1>
-<h4 class="author">Edwin X. Garcia Rios</h4>
-<h4 class="date">2026-10-01</h4>
+<h4 class="author">Edwin X. García Ríos</h4>
+<h4 class="date">2026-Oct-22, 04:49 PM</h4>
 
 </div>
 
 
-
+<pre class="r"><code>library(tidyverse)
+library(dplyr)
+library(aod)</code></pre>
+<pre class="r"><code>msleep &lt;- glimpse(msleep)
+storms &lt;- storms
+lizards &lt;- lizards</code></pre>
+<div id="mammals-sleep-dataset-msleep" class="section level1">
+<h1><strong>Mammals sleep dataset (msleep)</strong></h1>
+<p><strong>Q1. Use filter() to subset msleep to only animals who are
+awake for at least 12 hours of the day.</strong></p>
+<pre class="r"><code>msleep %&gt;%
+  filter(awake &gt;= 12)</code></pre>
+<pre><code>## # A tibble: 52 × 11
+##    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+##  2 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3
+##  3 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  
+##  4 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9
+##  5 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
+##  6 Goat   Capri herbi Arti… lc                   5.3       0.6      NA      18.7
+##  7 Guine… Cavis herbi Rode… domesticated         9.4       0.8       0.217  14.6
+##  8 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  
+##  9 Star-… Cond… omni  Sori… lc                  10.3       2.2      NA      13.7
+## 10 Afric… Cric… omni  Rode… &lt;NA&gt;                 8.3       2        NA      15.7
+## # ℹ 42 more rows
+## # ℹ 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+<p><strong>Q2. Use mutate() to create a new column called
+percent_day_awake that gives the percentage of the day that each species
+spends awake. Use select() with everything() at the end to verify your
+calculation.</strong></p>
+<pre class="r"><code>percent_day_awake &lt;- msleep %&gt;% mutate(percent_day_awake = (awake / 24) * 100)
+percent_day_awake %&gt;% 
+  select(everything())</code></pre>
+<pre><code>## # A tibble: 83 × 12
+##    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9
+##  2 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+##  3 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+##  4 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+##  5 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+##  6 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+##  7 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3
+##  8 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  
+##  9 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9
+## 10 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
+## # ℹ 73 more rows
+## # ℹ 3 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;, percent_day_awake &lt;dbl&gt;</code></pre>
+</div>
+<div id="storm-tracks-data-storms" class="section level1">
+<h1><strong>Storm tracks data (storms)</strong></h1>
+<p><strong>Q3. Use group_by() and summarise() to calculate the number of
+storms per year.</strong></p>
+<pre class="r"><code>storms %&gt;%
+  group_by(year) %&gt;%
+  summarise(
+    num_storms = n())</code></pre>
+<pre><code>## # A tibble: 50 × 2
+##     year num_storms
+##    &lt;dbl&gt;      &lt;int&gt;
+##  1  1975        238
+##  2  1976        126
+##  3  1977         92
+##  4  1978        152
+##  5  1979        324
+##  6  1980        335
+##  7  1981        311
+##  8  1982        111
+##  9  1983         88
+## 10  1984        342
+## # ℹ 40 more rows</code></pre>
+<p><strong>Q4. Use filter() to subset storms to only storms with wind
+speeds greater than 50 knots, then use arrange() to sort by wind
+descending.</strong></p>
+<pre class="r"><code>storms %&gt;%
+  filter(wind &gt; 50) %&gt;%
+  arrange(desc(wind))</code></pre>
+<pre><code>## # A tibble: 7,406 × 13
+##    name     year month   day  hour   lat  long status    category  wind pressure
+##    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt; &lt;int&gt;    &lt;int&gt;
+##  1 Allen    1980     8     7    18  21.8 -86.4 hurricane        5   165      899
+##  2 Gilbert  1988     9    14     0  19.7 -83.8 hurricane        5   160      888
+##  3 Wilma    2005    10    19    12  17.3 -82.8 hurricane        5   160      882
+##  4 Dorian   2019     9     1    16  26.5 -77   hurricane        5   160      910
+##  5 Dorian   2019     9     1    18  26.5 -77.1 hurricane        5   160      910
+##  6 Allen    1980     8     5    12  15.9 -70.5 hurricane        5   155      932
+##  7 Allen    1980     8     7    12  21   -84.8 hurricane        5   155      910
+##  8 Allen    1980     8     8     0  22.2 -87.9 hurricane        5   155      920
+##  9 Allen    1980     8     9     6  25   -94.2 hurricane        5   155      909
+## 10 Gilbert  1988     9    14     6  19.9 -85.3 hurricane        5   155      889
+## # ℹ 7,396 more rows
+## # ℹ 2 more variables: tropicalstorm_force_diameter &lt;int&gt;,
+## #   hurricane_force_diameter &lt;int&gt;</code></pre>
+</div>
+<div id="a-comparison-of-site-preferences-of-two-species-of-lizard-lizards" class="section level1">
+<h1><strong>A Comparison of Site Preferences of Two Species of Lizard
+(lizards)</strong></h1>
+<p><strong>Q5.Determine which Site and Diameter combination has the
+highest total grahami.</strong></p>
+<pre class="r"><code>lizards %&gt;%
+  group_by(Site, Diameter) %&gt;%
+  summarise(grahami = sum(grahami)) %&gt;%
+              arrange(desc(grahami))</code></pre>
+<pre><code>## `summarise()` has regrouped the output.
+## ℹ Summaries were computed grouped by Site and Diameter.
+## ℹ Output is grouped by Site.
+## ℹ Use `summarise(.groups = &quot;drop_last&quot;)` to silence this message.
+## ℹ Use `summarise(.by = c(Site, Diameter))` for per-operation grouping
+##   (`?dplyr::dplyr_by`) instead.</code></pre>
+<pre><code>## # A tibble: 4 × 3
+## # Groups:   Site [2]
+##   Site  Diameter grahami
+##   &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;
+## 1 Shade D &lt;= 2       220
+## 2 Shade D &gt; 2        122
+## 3 Sun   D &lt;= 2        65
+## 4 Sun   D &gt; 2         24</code></pre>
+</div>
 
 
 
