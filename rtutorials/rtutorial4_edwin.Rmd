@@ -1,0 +1,11 @@
+---
+title: "Assignment 4"
+author: "Edwin X. Garcia Rios"
+date: "`r format(Sys.time(), '%Y-%b-%d, %I:%M %p')`"
+output: html_document
+---
+
+# __R Tutorial: T-test__
+```{r}
+
+```
