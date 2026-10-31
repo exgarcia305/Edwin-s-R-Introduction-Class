@@ -54,6 +54,8 @@ ggplot(butterflies,
        x="Treatment Group",
        y="Wing Length")
 ```
+
+
 __Q5. Summary paragraph__
 ```{r}
 # The objective of this study was to determine whether pesticide exposure during the larval stage affects butterfly wing length. Normality was assessed using Shapiro-Wilk tests, and both the control group (W = 0.95826, p = 0.146) and pesticide-treated group (W = 0.97825, p = 0.6247) met the assumption of normality. An F-test showed unequal variances between groups, F = 0.40274, df = 39, p = 0.005512; therefore, Welch's two-sample t-test was performed. Results revealed a significant difference in wing length between groups, t = 3.9832, df = 66.029, p = 0.0001721. Butterflies exposed to pesticides had a lower mean wing length than untreated butterflies. Because the p-value was less than 0.05, the null hypothesis was rejected. These findings suggest that pesticide exposure during larval development negatively impacts butterfly growth, resulting in smaller adult wing lengths.  
