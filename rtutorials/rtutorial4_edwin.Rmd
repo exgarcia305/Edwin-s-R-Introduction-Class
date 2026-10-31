@@ -6,6 +6,55 @@ output: html_document
 ---
 
 # __R Tutorial: T-test__
-```{r}
+```{r message=F, warning=F}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(BSDA)
+```
+```{r setup, include=FALSE}
 
+knitr::opts_knit$set(root.dir = "C:/Users/egrio/OneDrive/Escritorio/ants_r/Edwin-s-R-Introduction-Class/rtutorials/butterflies") 
+```
+
+```{r}
+butterflies <- read_excel("butterflies_pesticides.xlsx")
+head(butterflies)
+```
+__Q1. Normality test__
+```{r}
+shapiro.test(butterflies$Wing_Length[butterflies$Group=="group1"])
+shapiro.test(butterflies$Wing_Length[butterflies$Group=="group2"])
+
+# Wing length did not significantly deviate from a normal distribution in either the control group (W = 0.958, p = 0.146) or the pesticide-treated group (W = 0.978, p = 0.625), indicating that the normality assumption was met.
+```
+__Q2. Equality of variances test__
+```{r}
+var.test(Wing_Length~Group, butterflies)
+
+# Homogeneity of variances was assessed using an F-test. The test indicated that variances differed significantly between the control and pesticide-treated groups, F = 0.40274, df = 39, p = 0.005512. Therefore, the assumption of equal variances was violated, and Welch's t-test was used for subsequent analyses.
+```
+__Q3. Statistical test__
+```{r}
+t.test(Wing_Length~Group,
+       butterflies,
+       var.equal=F)
+
+# Welch's t-test indicated a significant difference in wing length between pesticide-treated and untreated butterflies, t = 3.98, p = 0.00017. Butterflies in the control group exhibited a greater mean wing length than butterflies exposed to pesticides during larval development.
+```
+__Q4. ggplot__
+```{r}
+ggplot(butterflies,
+       aes(x=Group,
+           y=Wing_Length,
+           fill = Group)) +
+  geom_boxplot() +
+  theme_classic() +
+  labs(title = "Wing Length by Group",
+       x="Treatment Group",
+       y="Wing Length")
+```
+__Q5. Summary paragraph__
+```{r}
+# The objective of this study was to determine whether pesticide exposure during the larval stage affects butterfly wing length. Normality was assessed using Shapiro-Wilk tests, and both the control group (W = 0.95826, p = 0.146) and pesticide-treated group (W = 0.97825, p = 0.6247) met the assumption of normality. An F-test showed unequal variances between groups, F = 0.40274, df = 39, p = 0.005512; therefore, Welch's two-sample t-test was performed. Results revealed a significant difference in wing length between groups, t = 3.9832, df = 66.029, p = 0.0001721. Butterflies exposed to pesticides had a lower mean wing length than untreated butterflies. Because the p-value was less than 0.05, the null hypothesis was rejected. These findings suggest that pesticide exposure during larval development negatively impacts butterfly growth, resulting in smaller adult wing lengths.  
 ```
